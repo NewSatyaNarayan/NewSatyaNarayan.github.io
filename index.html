@@ -90,7 +90,13 @@
 
     /* ===== SERVICES ===== */
     .services { background: url('mechanical-texture-light.jpg'); }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; margin-top: 20px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* exactly 3 items per row */
+      justify-content: center; /* center the grid horizontally */
+      gap: 20px;
+      margin-top: 20px;
+    }
     .service-box {
       padding: 20px;
       background: #fff;
@@ -169,7 +175,7 @@
     /* ===== RESPONSIVE ===== */
     @media screen and (max-width:768px){
       .gallery { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; } /* stacked for mobile */
       nav a { display: block; margin: 10px 0; }
       header { flex-direction: column; text-align: center; }
       header div { text-align: center; margin-top: 10px; }
