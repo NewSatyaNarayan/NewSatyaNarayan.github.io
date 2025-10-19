@@ -18,27 +18,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ===== GLOBAL ===== */
     body {
       margin: 0;
       font-family: 'Poppins', Arial, Helvetica, sans-serif;
       line-height: 1.6;
       color: #000;
-      background: url('hero-bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-    body::before {
-      content:"";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(255,255,255,0.85);
-      z-index: -1;
     }
     a { text-decoration: none; transition: 0.3s; }
     a:hover { opacity: 0.8; }
 
-    /* ===== HEADER ===== */
     header {
       display: flex;
       align-items: center;
@@ -52,7 +40,6 @@
     header h1 { margin: 0; font-size: 32px; font-weight: 700; color: #b30000; }
     header p { margin: 2px 0; font-size: 14px; }
 
-    /* ===== NAVIGATION ===== */
     nav {
       background-color: rgba(179,0,0,0.9);
       text-align: center;
@@ -62,9 +49,8 @@
       z-index: 1000;
     }
     nav a { color: #fff; margin: 0 10px; font-weight: 600; font-size: 16px; cursor: pointer; }
-    nav a:hover { transform: translateY(-3px); }
+    nav a:hover, nav a.active { border-bottom: 2px solid #fff; padding-bottom:2px; }
 
-    /* ===== SECTIONS ===== */
     section {
       padding: 40px 20px;
       text-align: center;
@@ -74,6 +60,9 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
     }
     section h2 {
       font-size: 28px;
@@ -84,11 +73,9 @@
       padding-bottom: 5px;
     }
 
-    /* ===== ABOUT ===== */
     .about { background: url('mechanical-texture.jpg'); color: #000; }
     .about p { max-width: 800px; margin: auto; font-size: 16px; }
 
-    /* ===== SERVICES ===== */
     .services { background: url('mechanical-texture-light.jpg'); }
     .services-grid {
       display: grid;
@@ -109,20 +96,19 @@
     .service-box img { width: 100%; height: auto; object-fit: contain; border-radius: 5px; margin-bottom: 15px; }
     .service-box h3 { color: #b30000; margin-bottom: 10px; }
 
-    /* ===== OUR WORKS ===== */
     .work { background: url('mechanical-texture.jpg'); }
     .gallery {
-      column-count: 3;
-      column-gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
       margin-top: 20px;
     }
     .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 20px;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
     .gallery-item img {
       width: 100%;
@@ -130,15 +116,11 @@
       display: block;
       transition: transform 0.4s ease;
     }
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
+    .gallery-item:hover img { transform: scale(1.05); }
 
-    /* ===== LOCATIONS ===== */
     .locations { background-color: #f2f2f2; padding: 40px 20px; border-radius: 10px; }
     .locations iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; margin-bottom: 20px; }
 
-    /* ===== CONTACT ===== */
     .contact {
       background-color: #f2f2f2;
       padding: 40px 20px;
@@ -168,7 +150,6 @@
     }
     .contact input[type="submit"] { cursor: pointer; background-color: #b30000; color: #fff; border: none; }
 
-    /* ===== FOOTER ===== */
     footer {
       background-color: #b30000;
       color: #fff;
@@ -178,12 +159,23 @@
       font-size: 14px;
     }
 
-    /* ===== RESPONSIVE ===== */
-    @media screen and (max-width:1024px){
-      .gallery { column-count: 2; }
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background: #b30000;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index:1000;
     }
+
+    @media screen and (max-width:1024px){ .gallery { grid-template-columns: repeat(2,1fr); } }
     @media screen and (max-width:768px){
-      .gallery { column-count: 1; }
+      .gallery { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
       nav a { display: block; margin: 10px 0; }
       header { flex-direction: column; text-align: center; }
@@ -193,129 +185,174 @@
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <img src="logo.png" alt="Company Logo">
-    <div>
-      <h1>NEW SATYA NARAYAN WELDING WORKS</h1>
-      <p><strong>UNIT 1:</strong> Salap Bazar, Howrah - 711409</p>
-      <p><strong>UNIT 2:</strong> 189/1/1 Ashwini Kumar Mondal Road (Belilious Road), Howrah - 711101</p>
+<header>
+  <img src="logo.png" alt="Company Logo">
+  <div>
+    <h1>NEW SATYA NARAYAN WELDING WORKS</h1>
+    <p><strong>UNIT 1:</strong> Salap Bazar, Howrah - 711409</p>
+    <p><strong>UNIT 2:</strong> 189/1/1 Ashwini Kumar Mondal Road, Howrah - 711101</p>
+  </div>
+</header>
+
+<nav>
+  <a href="#about">About Us</a>
+  <a href="#services">Our Services</a>
+  <a href="#work">Our Works</a>
+  <a href="#locations">Locations</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact">Request Quote</a>
+</nav>
+
+<section class="about" id="about">
+  <h2>About Us</h2>
+  <p>
+    At <strong>New Satya Narayan Welding Works</strong>, we specialize in hydraulic press jobs, fabrication, machining, bending, and precision plate rolling. 
+    Our expertise includes manufacturing industrial components such as <b>Reducers, Pipes, Fabricated Spheres</b> and more. 
+    Quality is the pillar of our success. Each project is executed with precision and durability in mind. 
+    All welds are <b>X-ray Quality (RT)</b> and <b>Ultrasonically Testable (UT)</b> for superior reliability.
+  </p>
+</section>
+
+<section class="services" id="services">
+  <h2>Our Services</h2>
+  <div class="services-grid">
+    <div class="service-box">
+      <img src="hydraulic-press.jpg" alt="Hydraulic Press Jobs">
+      <h3>Hydraulic Press Jobs</h3>
+      <p>High-pressure hydraulic press jobs for industrial applications, offering precise force control and consistency. We handle large-scale metal forming, punching, and shaping tasks, ensuring every component meets exact specifications and industry standards.</p>
     </div>
-  </header>
-
-  <!-- ===== NAVIGATION ===== -->
-  <nav>
-    <a onclick="scrollToSection('about')">About Us</a>
-    <a onclick="scrollToSection('services')">Our Services</a>
-    <a onclick="scrollToSection('work')">Our Works</a>
-    <a onclick="scrollToSection('locations')">Locations</a>
-    <a onclick="scrollToSection('contact')">Contact</a>
-    <a onclick="scrollToSection('contact')">Request Quote</a>
-  </nav>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="about" id="about">
-    <h2>About Us</h2>
-    <p>
-      At <strong>New Satya Narayan Welding Works</strong>, we specialize in hydraulic press jobs, fabrication, machining, bending, and precision plate rolling. 
-      Our expertise includes manufacturing industrial components such as <b>Reducers, Pipes, Fabricated Spheres</b> and more. 
-      Quality is the pillar of our success. Each project is executed with precision and durability in mind. 
-      All welds are <b>X-ray Quality (RT)</b> and <b>Ultrasonically Testable (UT)</b> for superior reliability.
-    </p>
-  </section>
-
-  <!-- ===== SERVICES ===== -->
-  <section class="services" id="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service-box">
-        <img src="hydraulic-press.jpg" alt="Hydraulic Press Jobs">
-        <h3>Hydraulic Press Jobs</h3>
-        <p>High-pressure hydraulic press jobs for industrial applications, offering precise force control and consistency. We handle large-scale metal forming, punching, and shaping tasks, ensuring every component meets exact specifications and industry standards.</p>
-      </div>
-      <div class="service-box">
-        <img src="fabrication.jpg" alt="Fabrication Jobs">
-        <h3>Fabrication Jobs</h3>
-        <p>Comprehensive fabrication services for industrial structures, supports, and machinery components. Our skilled team uses advanced techniques to cut, assemble, and weld materials with precision, delivering durable, high-quality structures customized to your project requirements.</p>
-      </div>
-      <div class="service-box">
-        <img src="machining.jpg" alt="Machining Jobs">
-        <h3>Machining Jobs</h3>
-        <p>Precision machining of metal components to exact tolerances using advanced equipment. We provide milling, turning, drilling, and finishing services to produce parts that perfectly fit your machinery, ensuring smooth operation and long-lasting performance.</p>
-      </div>
-      <div class="service-box">
-        <img src="bending.jpg" alt="Bending Jobs">
-        <h3>Bending Jobs</h3>
-        <p>Professional bending services for industrial materials. We provide seamless pipe bending, angle bending, channel bending, square bar bending, and custom shapes. Each bending task is performed with precision to ensure correct angles, curves, and shapes suitable for industrial assemblies, maintaining structural integrity.</p>
-      </div>
-      <div class="service-box">
-        <img src="custom-components.jpg" alt="Custom Components">
-        <h3>Custom Components</h3>
-        <p>Custom components designed and fabricated according to your specific requirements. We specialize in creating unique industrial parts, transitional pieces, reducers, and more. Each product undergoes strict quality checks, including X-ray and ultrasonic weld testing for superior reliability.</p>
-      </div>
-      <div class="service-box">
-        <img src="welding.jpg" alt="Welding Jobs">
-        <h3>Welding Jobs</h3>
-        <p>High-quality MIG, TIG, and Arc welding services for custom industrial assemblies and repairs. Ensuring strong, durable, and precise welds for all your projects.</p>
-      </div>
+    <div class="service-box">
+      <img src="fabrication.jpg" alt="Fabrication Jobs">
+      <h3>Fabrication Jobs</h3>
+      <p>Comprehensive fabrication services for industrial structures, supports, and machinery components. Our skilled team uses advanced techniques to cut, assemble, and weld materials with precision, delivering durable, high-quality structures customized to your project requirements.</p>
     </div>
-  </section>
-
-  <!-- ===== OUR WORKS ===== -->
-  <section class="work" id="work">
-    <h2>Our Works</h2>
-    <div class="gallery">
-      <div class="gallery-item"><img src="image1.jpg" alt="Work Image"></div>
-      <div class="gallery-item"><img src="image2.jpg" alt="Work Image"></div>
-      <div class="gallery-item"><img src="image3.jpg" alt="Work Image"></div>
-      <div class="gallery-item"><img src="image4.jpg" alt="Work Image"></div>
-      <div class="gallery-item"><img src="image5.jpg" alt="Work Image"></div>
-      <div class="gallery-item"><img src="image6.jpg" alt="Work Image"></div>
+    <div class="service-box">
+      <img src="machining.jpg" alt="Machining Jobs">
+      <h3>Machining Jobs</h3>
+      <p>Precision machining of metal components to exact tolerances using advanced equipment. We provide milling, turning, drilling, and finishing services to produce parts that perfectly fit your machinery, ensuring smooth operation and long-lasting performance.</p>
     </div>
-  </section>
-
-  <!-- ===== LOCATIONS ===== -->
-  <section class="locations" id="locations">
-    <h2>Our Locations</h2>
-    <h4>Unit 1</h4>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325.53731322465137!2d88.26734678515355!3d22.61519551526018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8830034457161%3A0x6582fabc7670dd4e!2sNew%20Satya%20Narayan%20Welding%20Works!5e0!3m2!1sen!2sin!4v1757956803217!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-    <h4>Unit 2</h4>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58931.447422635116!2d88.25241573232422!3d22.608427843102355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027700322f5d1f%3A0x8e2eaa26b7ea065!2sNew%20Satya%20Narayan%20Welding%20Works%20(Unit-2)!5e0!3m2!1sen!2sin!4v1758220220742!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section class="contact" id="contact">
-    <h2>Contact Us / Request Quote</h2>
-    <p><b>Mobile:</b> 9830182982 & 8240749830</p>
-    <p><b>Landline:</b> UNIT 1: 033-26530183 | UNIT 2: 033-26380048</p>
-    <p><b>Unit 1:</b> Salap Bazar, Howrah - 711409</p>
-    <p><b>Unit 2:</b> 189/1/1 Ashwini Kumar Mondal Road (Belilious Road), Howrah - 711101</p>
-
-    <h3>Request a Quote</h3>
-    <form action="mailto:newsatyanarayanweldingworks@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="Name" placeholder="Your Name" required>
-      <input type="email" name="Email" placeholder="Your Email" required>
-      <textarea name="Message" placeholder="Describe your requirement..." rows="5" required></textarea>
-      <input type="submit" value="Send Request">
-    </form>
-
-    <div style="margin-top:20px;">
-      <a href="mailto:newsatyanarayanweldingworks@gmail.com">📧 Email Us</a>
-      <a href="https://wa.me/918240749830" target="_blank">💬 WhatsApp</a>
+    <div class="service-box">
+      <img src="bending.jpg" alt="Bending Jobs">
+      <h3>Bending Jobs</h3>
+      <p>Professional bending services for industrial materials. We provide seamless pipe bending, angle bending, channel bending, square bar bending, and custom shapes. Each bending task is performed with precision to ensure correct angles, curves, and shapes suitable for industrial assemblies, maintaining structural integrity.</p>
     </div>
-  </section>
+    <div class="service-box">
+      <img src="custom-components.jpg" alt="Custom Components">
+      <h3>Custom Components</h3>
+      <p>Custom components designed and fabricated according to your specific requirements. We specialize in creating unique industrial parts, transitional pieces, reducers, and more. Each product undergoes strict quality checks, including X-ray and ultrasonic weld testing for superior reliability.</p>
+    </div>
+    <div class="service-box">
+      <img src="welding.jpg" alt="Welding Jobs">
+      <h3>Welding Jobs</h3>
+      <p>High-quality MIG, TIG, and Arc welding services for custom industrial assemblies and repairs. Ensuring strong, durable, and precise welds for all your projects.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    &copy; 2025 New Satya Narayan Welding Works. All Rights Reserved.
-  </footer>
+<section class="work" id="work">
+  <h2>Our Works</h2>
+  <div class="gallery">
+    <div class="gallery-item"><img src="image1.jpg" alt="Work Image"></div>
+    <div class="gallery-item"><img src="image2.jpg" alt="Work Image"></div>
+    <div class="gallery-item"><img src="image3.jpg" alt="Work Image"></div>
+    <div class="gallery-item"><img src="image4.jpg" alt="Work Image"></div>
+    <div class="gallery-item"><img src="image5.jpg" alt="Work Image"></div>
+    <div class="gallery-item"><img src="image6.jpg" alt="Work Image"></div>
+  </div>
+</section>
 
-  <script>
-    function scrollToSection(id){
-      document.getElementById(id).scrollIntoView({behavior:'smooth'});
-    }
-  </script>
+<section class="locations" id="locations">
+  <h2>Our Locations</h2>
+  <h4>Unit 1</h4>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325.53731322465137!2d88.26734678515355!3d22.61519551526018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8830034457161%3A0x6582fabc7670dd4e!2sNew%20Satya%20Narayan%20Welding%20Works!5e0!3m2!1sen!2sin!4v1757956803217!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <h4>Unit 2</h4>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58931.447422635116!2d88.25241573232422!3d22.608427843102355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027700322f5d1f%3A0x8e2eaa26b7ea065!2sNew%20Satya%20Narayan%20Welding%20Works%20(Unit-2)!5e0!3m2!1sen!2sin!4v1758220220742!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact Us / Request Quote</h2>
+  <p><b>Mobile:</b> 9830182982 & 8240749830</p>
+  <p><b>Landline:</b> UNIT 1: 033-26530183 | UNIT 2: 033-26380048</p>
+  <p><b>Unit 1:</b> Salap Bazar, Howrah - 711409</p>
+  <p><b>Unit 2:</b> 189/1/1 Ashwini Kumar Mondal Road, Howrah - 711101</p>
+
+  <h3>Request a Quote</h3>
+  <form action="mailto:newsatyanarayanweldingworks@gmail.com" method="post" enctype="text/plain">
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="email" name="Email" placeholder="Your Email" required>
+    <textarea name="Message" placeholder="Describe your requirement..." rows="5" required></textarea>
+    <input type="submit" value="Send Request">
+  </form>
+
+  <div style="margin-top:20px;">
+    <a href="mailto:newsatyanarayanweldingworks@gmail.com">📧 Email Us</a>
+    <a href="https://wa.me/918240749830" target="_blank">💬 WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 New Satya Narayan Welding Works. All Rights Reserved.
+</footer>
+
+<button id="topBtn">↑ Top</button>
+
+<script>
+  // Smooth Scroll
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // Scroll Reveal
+  const sections = document.querySelectorAll('section');
+  function revealSection(){
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if(sectionTop < triggerBottom){
+        section.style.opacity = 1;
+        section.style.transform = 'translateY(0)';
+      }
+    });
+  }
+  window.addEventListener('scroll', revealSection);
+  revealSection();
+
+  // Gallery Lightbox
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+  galleryItems.forEach(img => {
+    img.addEventListener('click', () => {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
+      overlay.style.display = 'flex';
+      overlay.style.justifyContent = 'center';
+      overlay.style.alignItems = 'center';
+      overlay.style.cursor = 'pointer';
+      overlay.style.zIndex = 2000;
+      overlay.innerHTML = `<img src="${img.src}" style="max-width:90%; max-height:90%; border-radius:10px;">`;
+      overlay.addEventListener('click', () => overlay.remove());
+      document.body.appendChild(overlay);
+    });
+  });
+
+  // Back to Top Button
+  const topBtn = document.getElementById('topBtn');
+  window.onscroll = () => {
+    topBtn.style.display = (document.documentElement.scrollTop > 200) ? 'block' : 'none';
+  };
+  topBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
 
 </body>
 </html>
