@@ -36,13 +36,12 @@
       background-color: rgba(255,255,255,0.9);
       flex-wrap: wrap;
       position: relative;
-      z-index: 1001;
+      z-index: 100;
     }
     header img { max-width: 150px; }
     header h1 { margin: 0; font-size: 32px; font-weight: 700; color: #b30000; }
     header p { margin: 2px 0; font-size: 14px; }
 
-    /* Navigation */
     nav {
       background-color: rgba(179,0,0,0.9);
       text-align: center;
@@ -50,48 +49,9 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
     }
     nav a { color: #fff; margin: 0 10px; font-weight: 600; font-size: 16px; cursor: pointer; }
     nav a:hover, nav a.active { border-bottom: 2px solid #fff; padding-bottom:2px; }
-
-    /* Hamburger for mobile */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: #b30000;
-      transition: 0.3s;
-    }
-
-    /* Mobile slide menu */
-    #mobileNav {
-      position: fixed;
-      left: -250px;
-      top: 0;
-      width: 250px;
-      height: 100%;
-      background-color: rgba(179,0,0,0.95);
-      display: flex;
-      flex-direction: column;
-      padding-top: 60px;
-      transition: left 0.3s ease;
-      z-index: 2000;
-    }
-    #mobileNav a {
-      color: #fff;
-      padding: 15px 20px;
-      font-size: 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-    #mobileNav a:hover { background-color: rgba(255,255,255,0.1); }
 
     section {
       padding: 40px 20px;
@@ -215,6 +175,43 @@
       z-index:1000;
     }
 
+    /* Hamburger & Mobile Slide Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 3000;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #b30000;
+      transition: 0.3s;
+    }
+    #mobileNav {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      background-color: rgba(179,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      padding-top: 60px;
+      transition: top 0.3s ease;
+      z-index: 2000;
+    }
+    #mobileNav a {
+      color: #fff;
+      padding: 15px 20px;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    #mobileNav a:hover { background-color: rgba(255,255,255,0.1); }
+
     @media screen and (max-width:1024px){ .gallery { grid-template-columns: repeat(2,1fr); } }
     @media screen and (max-width:768px){
       .gallery { grid-template-columns: 1fr; }
@@ -233,15 +230,10 @@
     <p><strong>UNIT 1:</strong> Salap Bazar, Howrah - 711409</p>
     <p><strong>UNIT 2:</strong> 189/1/1 Ashwini Kumar Mondal Road, Howrah - 711101</p>
   </div>
-  <div class="hamburger" onclick="toggleMobileNav()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
 </header>
 
-<!-- Desktop Nav -->
-<nav id="desktopNav">
+<!-- Desktop Navigation -->
+<nav>
   <a href="#about">About Us</a>
   <a href="#services">Our Services</a>
   <a href="#work">Our Works</a>
@@ -249,6 +241,13 @@
   <a href="#contact">Contact</a>
   <a href="#contact">Request Quote</a>
 </nav>
+
+<!-- Hamburger for Mobile -->
+<div class="hamburger" onclick="toggleMobileNav()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
 
 <!-- Mobile Slide Menu -->
 <div id="mobileNav">
@@ -355,21 +354,8 @@
 <button id="topBtn">↑ Top</button>
 
 <script>
-  // Toggle mobile menu
-  function toggleMobileNav(){
-    const mobileNav = document.getElementById('mobileNav');
-    if(mobileNav.style.left === '0px'){
-      mobileNav.style.left = '-250px';
-    } else {
-      mobileNav.style.left = '0px';
-    }
-  }
-  function closeMobileNav(){
-    document.getElementById('mobileNav').style.left = '-250px';
-  }
-
   // Smooth Scroll
-  document.querySelectorAll('nav a, #mobileNav a').forEach(link => {
+  document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function(e){
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
@@ -422,6 +408,16 @@
   topBtn.onclick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Mobile Nav Toggle
+  function toggleMobileNav(){
+    const menu = document.getElementById('mobileNav');
+    if(menu.style.top === '0px') menu.style.top = '-100%';
+    else menu.style.top = '0px';
+  }
+  function closeMobileNav(){
+    document.getElementById('mobileNav').style.top = '-100%';
+  }
 </script>
 
 </body>
