@@ -14,7 +14,7 @@
   <meta property="og:description" content="Hydraulic Press Jobs, Fabrication, Machining, Bending, Plate Rolling, and Industrial Welding Services in Howrah.">
 
   <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -40,11 +40,23 @@
     }
 
     body {
-      font-family: 'Work Sans', sans-serif;
+      font-family: 'Work Sans', 'Hind Siliguri', sans-serif;
       line-height: 1.6;
       color: var(--primary);
       background: var(--light);
       overflow-x: hidden;
+    }
+
+    body[lang="bn"] {
+      font-family: 'Hind Siliguri', 'Work Sans', sans-serif;
+    }
+
+    body[lang="bn"] .hero-title,
+    body[lang="bn"] .section-title,
+    body[lang="bn"] .service-title,
+    body[lang="bn"] .location-title {
+      font-family: 'Hind Siliguri', sans-serif;
+      letter-spacing: 0;
     }
 
     /* Header */
@@ -108,6 +120,124 @@
     nav {
       display: flex;
       gap: 45px;
+      align-items: center;
+    }
+
+    .lang-selector {
+      position: fixed;
+      top: 100px;
+      right: 30px;
+      z-index: 1500;
+      background: var(--secondary);
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(255, 77, 0, 0.4);
+      overflow: hidden;
+      display: flex;
+      transition: all 0.3s ease;
+    }
+
+    .lang-selector button {
+      background: transparent;
+      border: none;
+      color: var(--light);
+      padding: 12px 20px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .lang-selector button.active {
+      background: var(--primary);
+    }
+
+    .lang-selector button:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .lang-selector {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    /* Bengali text adjustments */
+    body[lang="bn"] {
+      font-family: 'Hind Siliguri', 'Work Sans', sans-serif;
+    }
+
+    body[lang="bn"] .hero-title {
+      font-size: clamp(50px, 10vw, 110px);
+      letter-spacing: 0;
+      line-height: 1.1;
+    }
+
+    body[lang="bn"] .section-title {
+      font-size: clamp(35px, 5vw, 55px);
+      letter-spacing: 0;
+      line-height: 1.2;
+    }
+
+    body[lang="bn"] .brand-text h1 {
+      font-size: 20px;
+      line-height: 1.4;
+      letter-spacing: 0;
+    }
+
+    body[lang="bn"] .brand-text p {
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    body[lang="bn"] .service-title,
+    body[lang="bn"] .location-title {
+      font-size: 22px;
+      letter-spacing: 0;
+      line-height: 1.3;
+    }
+
+    body[lang="bn"] .hero-subtitle {
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.5;
+    }
+
+    body[lang="bn"] .hero-tagline {
+      font-size: 16px;
+      line-height: 1.4;
+      padding: 12px 25px;
+    }
+
+    body[lang="bn"] .btn {
+      padding: 16px 35px;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    body[lang="bn"] nav a {
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    body[lang="bn"] .section-subtitle {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      body[lang="bn"] .brand-text h1 {
+        font-size: 16px;
+        line-height: 1.4;
+      }
+
+      body[lang="bn"] .brand-text p {
+        font-size: 9px;
+        line-height: 1.3;
+      }
     }
 
     nav a {
@@ -1244,16 +1374,16 @@
     <div class="logo-container">
       <img src="logo.png" alt="Logo">
       <div class="brand-text">
-        <h1>NEW SATYA NARAYAN<br>WELDING WORKS</h1>
-        <p>UNIT 1: Salap Bazar | UNIT 2: Ashwini Kumar Mondal Road</p>
+        <h1 data-en="NEW SATYA NARAYAN WELDING WORKS" data-bn="নিউ সত্য নারায়ণ ওয়েল্ডিং ওয়ার্কস">NEW SATYA NARAYAN<br>WELDING WORKS</h1>
+        <p data-en="UNIT 1: Salap Bazar | UNIT 2: Ashwini Kumar Mondal Road" data-bn="ইউনিট ১: সালাপ বাজার | ইউনিট ২: অশ্বিনী কুমার মন্ডল রোড">UNIT 1: Salap Bazar | UNIT 2: Ashwini Kumar Mondal Road</p>
       </div>
     </div>
     <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#works">Works</a>
-      <a href="#locations">Locations</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-en="About" data-bn="পরিচিতি">About</a>
+      <a href="#services" data-en="Services" data-bn="সেবা">Services</a>
+      <a href="#works" data-en="Works" data-bn="কাজ">Works</a>
+      <a href="#locations" data-en="Locations" data-bn="অবস্থান">Locations</a>
+      <a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
     </nav>
     <div class="hamburger" onclick="toggleMobile()">
       <span></span>
@@ -1264,27 +1394,33 @@
 
   <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobileNav">
-    <a href="#about" onclick="closeMobile()">About</a>
-    <a href="#services" onclick="closeMobile()">Services</a>
-    <a href="#works" onclick="closeMobile()">Works</a>
-    <a href="#locations" onclick="closeMobile()">Locations</a>
-    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="#about" onclick="closeMobile()" data-en="About" data-bn="পরিচিতি">About</a>
+    <a href="#services" onclick="closeMobile()" data-en="Services" data-bn="সেবা">Services</a>
+    <a href="#works" onclick="closeMobile()" data-en="Works" data-bn="কাজ">Works</a>
+    <a href="#locations" onclick="closeMobile()" data-en="Locations" data-bn="অবস্থান">Locations</a>
+    <a href="#contact" onclick="closeMobile()" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
+  </div>
+
+  <!-- Language Selector -->
+  <div class="lang-selector">
+    <button onclick="setLanguage('en')" id="lang-en" class="active">EN</button>
+    <button onclick="setLanguage('bn')" id="lang-bn">বাংলা</button>
   </div>
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-tag">Industrial Excellence</div>
+        <div class="hero-tag" data-en="Industrial Excellence" data-bn="শিল্প উৎকর্ষতা">Industrial Excellence</div>
         <h1 class="hero-title">
-          <span class="line-1">PRECISION</span>
-          <span class="line-2">ENGINEERING</span>
+          <span class="line-1" data-en="PRECISION" data-bn="নিখুঁত">PRECISION</span>
+          <span class="line-2" data-en="ENGINEERING" data-bn="প্রকৌশল">ENGINEERING</span>
         </h1>
-        <p class="hero-subtitle">Leading provider of industrial welding and fabrication solutions across Howrah</p>
-        <p class="hero-tagline">Radiographic & Ultrasonic Tested Welding</p>
+        <p class="hero-subtitle" data-en="Leading provider of industrial welding and fabrication solutions across Howrah" data-bn="হাওড়া জুড়ে শিল্প ওয়েল্ডিং এবং ফেব্রিকেশন সমাধানের শীর্ষস্থানীয় প্রদানকারী">Leading provider of industrial welding and fabrication solutions across Howrah</p>
+        <p class="hero-tagline" data-en="Radiographic & Ultrasonic Tested Welding" data-bn="রেডিওগ্রাফিক ও আল্ট্রাসনিক পরীক্ষিত ওয়েল্ডিং">Radiographic & Ultrasonic Tested Welding</p>
         <div class="hero-buttons">
-          <a href="#contact" class="btn btn-primary">Request Quote</a>
-          <a href="#services" class="btn btn-secondary">Our Services</a>
+          <a href="#contact" class="btn btn-primary" data-en="Request Quote" data-bn="উদ্ধৃতি অনুরোধ করুন">Request Quote</a>
+          <a href="#services" class="btn btn-secondary" data-en="Our Services" data-bn="আমাদের সেবা">Our Services</a>
         </div>
       </div>
     </div>
@@ -1293,19 +1429,19 @@
   <!-- About -->
   <section id="about" class="about reveal">
     <div class="section-header">
-      <div class="section-tag">Who We Are</div>
-      <h2 class="section-title">About Us</h2>
-      <p class="section-subtitle">Building Industrial Excellence Since Inception</p>
+      <div class="section-tag" data-en="Who We Are" data-bn="আমরা কে">Who We Are</div>
+      <h2 class="section-title" data-en="About Us" data-bn="আমাদের সম্পর্কে">About Us</h2>
+      <p class="section-subtitle" data-en="Building Industrial Excellence Since Inception" data-bn="প্রতিষ্ঠা থেকেই শিল্প উৎকর্ষতা নির্মাণ করছি">Building Industrial Excellence Since Inception</p>
     </div>
     <div class="about-grid">
       <div class="about-content">
-        <p>
+        <p data-en="At New Satya Narayan Welding Works, we are pioneers in hydraulic press operations, precision fabrication, advanced machining, expert bending, and specialized plate rolling services. Our state-of-the-art facilities manufacture critical industrial components including reducers, pipes, and fabricated spheres with unmatched precision." data-bn="নিউ সত্য নারায়ণ ওয়েল্ডিং ওয়ার্কস-এ, আমরা হাইড্রোলিক প্রেস অপারেশন, নিখুঁত ফেব্রিকেশন, উন্নত মেশিনিং, দক্ষ বেন্ডিং এবং বিশেষায়িত প্লেট রোলিং সেবায় পথপ্রদর্শক। আমাদের অত্যাধুনিক সুবিধাগুলি অতুলনীয় নির্ভুলতার সাথে রিডিউসার, পাইপ এবং ফেব্রিকেটেড স্ফিয়ার সহ গুরুত্বপূর্ণ শিল্প উপাদান তৈরি করে।">
           At <strong>New Satya Narayan Welding Works</strong>, we are pioneers in hydraulic press operations, 
           precision fabrication, advanced machining, expert bending, and specialized plate rolling services. 
           Our state-of-the-art facilities manufacture critical industrial components including reducers, 
           pipes, and fabricated spheres with unmatched precision.
         </p>
-        <p>
+        <p data-en="Quality is not just our promise—it's our foundation. Every project undergoes rigorous testing and inspection. Our welds meet X-ray Quality (RT) and Ultrasonic Testing (UT) standards, ensuring maximum reliability and durability for even the most demanding industrial applications." data-bn="গুণমান শুধুমাত্র আমাদের প্রতিশ্রুতি নয়—এটি আমাদের ভিত্তি। প্রতিটি প্রকল্প কঠোর পরীক্ষা এবং পরিদর্শনের মধ্য দিয়ে যায়। আমাদের ওয়েল্ড এক্স-রে কোয়ালিটি (RT) এবং আল্ট্রাসনিক টেস্টিং (UT) মান পূরণ করে, যা সবচেয়ে চাহিদাপূর্ণ শিল্প অ্যাপ্লিকেশনের জন্যও সর্বাধিক নির্ভরযোগ্যতা এবং স্থায়িত্ব নিশ্চিত করে।">
           Quality is not just our promise—it's our foundation. Every project undergoes rigorous testing 
           and inspection. Our welds meet <strong>X-ray Quality (RT)</strong> and <strong>Ultrasonic 
           Testing (UT)</strong> standards, ensuring maximum reliability and durability for even the most 
@@ -1314,28 +1450,28 @@
         <div class="features-grid">
           <div class="feature-box">
             <i class="fas fa-certificate"></i>
-            <h3>RT & UT Tested</h3>
-            <p>Superior weld quality</p>
+            <h3 data-en="RT & UT Tested" data-bn="RT এবং UT পরীক্ষিত">RT & UT Tested</h3>
+            <p data-en="Superior weld quality" data-bn="উন্নত ওয়েল্ড মান">Superior weld quality</p>
           </div>
           <div class="feature-box">
             <i class="fas fa-cogs"></i>
-            <h3>Precision Work</h3>
-            <p>Exact specifications</p>
+            <h3 data-en="Precision Work" data-bn="নিখুঁত কাজ">Precision Work</h3>
+            <p data-en="Exact specifications" data-bn="সঠিক বিশিষ্টতা">Exact specifications</p>
           </div>
           <div class="feature-box">
             <i class="fas fa-industry"></i>
-            <h3>Industrial Scale</h3>
-            <p>Large-scale projects</p>
+            <h3 data-en="Industrial Scale" data-bn="শিল্প স্কেল">Industrial Scale</h3>
+            <p data-en="Large-scale projects" data-bn="বড় আকারের প্রকল্প">Large-scale projects</p>
           </div>
           <div class="feature-box">
             <i class="fas fa-clock"></i>
-            <h3>Timely Delivery</h3>
-            <p>On-schedule completion</p>
+            <h3 data-en="Timely Delivery" data-bn="সময়মত ডেলিভারি">Timely Delivery</h3>
+            <p data-en="On-schedule completion" data-bn="সময়সূচী অনুযায়ী সমাপ্তি">On-schedule completion</p>
           </div>
         </div>
       </div>
       <div class="clients-box">
-        <h3 class="clients-title">We Offer Services To</h3>
+        <h3 class="clients-title" data-en="We Offer Services To" data-bn="আমরা সেবা প্রদান করি">We Offer Services To</h3>
         <div class="clients-grid">
           <div class="client-item">
             <img src="client1.png" alt="Client 1">
@@ -1363,17 +1499,17 @@
   <!-- Services -->
   <section id="services" class="services reveal">
     <div class="section-header">
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-title">Our Services</h2>
-      <p class="section-subtitle">Comprehensive Industrial Solutions</p>
+      <div class="section-tag" data-en="What We Do" data-bn="আমরা যা করি">What We Do</div>
+      <h2 class="section-title" data-en="Our Services" data-bn="আমাদের সেবা">Our Services</h2>
+      <p class="section-subtitle" data-en="Comprehensive Industrial Solutions" data-bn="সম্পূর্ণ শিল্প সমাধান">Comprehensive Industrial Solutions</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
         <img src="hydraulic-press.jpg" alt="Hydraulic Press" class="service-img">
         <div class="service-body">
           <i class="fas fa-compress-arrows-alt service-icon"></i>
-          <h3 class="service-title">Hydraulic Press Jobs</h3>
-          <p class="service-text">
+          <h3 class="service-title" data-en="Hydraulic Press Jobs" data-bn="হাইড্রোলিক প্রেস কাজ">Hydraulic Press Jobs</h3>
+          <p class="service-text" data-en="High-pressure hydraulic operations for industrial metal forming, punching, and shaping. Precise force control ensures components meet exact specifications and industry standards." data-bn="শিল্প ধাতু গঠন, পাঞ্চিং এবং আকার দেওয়ার জন্য উচ্চ চাপের হাইড্রোলিক অপারেশন। নিখুঁত বল নিয়ন্ত্রণ নিশ্চিত করে যে উপাদানগুলি সঠিক বিশিষ্টতা এবং শিল্প মান পূরণ করে।">
             High-pressure hydraulic operations for industrial metal forming, punching, and shaping. 
             Precise force control ensures components meet exact specifications and industry standards.
           </p>
@@ -1384,8 +1520,8 @@
         <img src="fabrication.jpg" alt="Fabrication" class="service-img">
         <div class="service-body">
           <i class="fas fa-tools service-icon"></i>
-          <h3 class="service-title">Fabrication Jobs</h3>
-          <p class="service-text">
+          <h3 class="service-title" data-en="Fabrication Jobs" data-bn="ফেব্রিকেশন কাজ">Fabrication Jobs</h3>
+          <p class="service-text" data-en="Comprehensive fabrication for industrial structures, supports, and machinery components. Advanced cutting, assembly, and welding techniques deliver durable, high-quality results." data-bn="শিল্প কাঠামো, সাপোর্ট এবং যন্ত্রাংশের জন্য ব্যাপক ফেব্রিকেশন। উন্নত কাটিং, সমাবেশ এবং ওয়েল্ডিং কৌশল টেকসই, উচ্চ মানের ফলাফল প্রদান করে।">
             Comprehensive fabrication for industrial structures, supports, and machinery components. 
             Advanced cutting, assembly, and welding techniques deliver durable, high-quality results.
           </p>
@@ -1396,8 +1532,8 @@
         <img src="machining.jpg" alt="Machining" class="service-img">
         <div class="service-body">
           <i class="fas fa-cog service-icon"></i>
-          <h3 class="service-title">Machining Jobs</h3>
-          <p class="service-text">
+          <h3 class="service-title" data-en="Machining Jobs" data-bn="মেশিনিং কাজ">Machining Jobs</h3>
+          <p class="service-text" data-en="Precision machining to exact tolerances using advanced equipment. Milling, turning, drilling, and finishing services for perfect-fit components and smooth operation." data-bn="উন্নত সরঞ্জাম ব্যবহার করে সঠিক সহনশীলতার জন্য নিখুঁত মেশিনিং। নিখুঁত ফিট উপাদান এবং মসৃণ অপারেশনের জন্য মিলিং, টার্নিং, ড্রিলিং এবং ফিনিশিং সেবা।">
             Precision machining to exact tolerances using advanced equipment. Milling, turning, 
             drilling, and finishing services for perfect-fit components and smooth operation.
           </p>
@@ -1408,8 +1544,8 @@
         <img src="bending.jpg" alt="Bending" class="service-img">
         <div class="service-body">
           <i class="fas fa-bezier-curve service-icon"></i>
-          <h3 class="service-title">Bending Jobs</h3>
-          <p class="service-text">
+          <h3 class="service-title" data-en="Bending Jobs" data-bn="বেন্ডিং কাজ">Bending Jobs</h3>
+          <p class="service-text" data-en="Professional bending for pipes, angles, channels, and square bars. Precision bending maintains structural integrity with correct angles and curves for industrial assemblies." data-bn="পাইপ, কোণ, চ্যানেল এবং বর্গাকার বারগুলির জন্য পেশাদার বেন্ডিং। নিখুঁত বেন্ডিং শিল্প সমাবেশের জন্য সঠিক কোণ এবং বক্ররেখা সহ কাঠামোগত অখণ্ডতা বজায় রাখে।">
             Professional bending for pipes, angles, channels, and square bars. Precision bending 
             maintains structural integrity with correct angles and curves for industrial assemblies.
           </p>
@@ -1420,8 +1556,8 @@
         <img src="custom-components.jpg" alt="Custom Components" class="service-img">
         <div class="service-body">
           <i class="fas fa-cube service-icon"></i>
-          <h3 class="service-title">Custom Components</h3>
-          <p class="service-text">
+          <h3 class="service-title" data-en="Custom Components" data-bn="কাস্টম উপাদান">Custom Components</h3>
+          <p class="service-text" data-en="Custom-designed industrial parts, reducers, and transitional pieces. Each component undergoes X-ray and ultrasonic testing for superior reliability." data-bn="কাস্টম-ডিজাইন করা শিল্প অংশ, রিডিউসার এবং ট্রানজিশনাল পিস। প্রতিটি উপাদান উচ্চতর নির্ভরযোগ্যতার জন্য এক্স-রে এবং আল্ট্রাসনিক পরীক্ষার মধ্য দিয়ে যায়।">
             Custom-designed industrial parts, reducers, and transitional pieces. Each component 
             undergoes X-ray and ultrasonic testing for superior reliability.
           </p>
@@ -1432,8 +1568,8 @@
         <img src="welding.jpg" alt="Welding" class="service-img">
         <div class="service-body">
           <i class="fas fa-fire service-icon"></i>
-          <h3 class="service-title">Welding Jobs</h3>
-          <p class="service-text">
+          <h3 class="service-title" data-en="Welding Jobs" data-bn="ওয়েল্ডিং কাজ">Welding Jobs</h3>
+          <p class="service-text" data-en="High-quality MIG, TIG, and Arc welding for custom assemblies and repairs. Strong, durable, and precise welds meeting RT and UT quality standards." data-bn="কাস্টম সমাবেশ এবং মেরামতের জন্য উচ্চ মানের MIG, TIG এবং Arc ওয়েল্ডিং। RT এবং UT মান মান পূরণকারী শক্তিশালী, টেকসই এবং নিখুঁত ওয়েল্ড।">
             High-quality MIG, TIG, and Arc welding for custom assemblies and repairs. 
             Strong, durable, and precise welds meeting RT and UT quality standards.
           </p>
@@ -1445,9 +1581,9 @@
   <!-- Works -->
   <section id="works" class="works reveal">
     <div class="section-header">
-      <div class="section-tag">Portfolio</div>
-      <h2 class="section-title">Our Works</h2>
-      <p class="section-subtitle">Projects Delivered with Excellence</p>
+      <div class="section-tag" data-en="Portfolio" data-bn="পোর্টফোলিও">Portfolio</div>
+      <h2 class="section-title" data-en="Our Works" data-bn="আমাদের কাজ">Our Works</h2>
+      <p class="section-subtitle" data-en="Projects Delivered with Excellence" data-bn="উৎকর্ষতার সাথে সম্পন্ন প্রকল্প">Projects Delivered with Excellence</p>
     </div>
     <div class="works-grid">
       <div class="work-item" onclick="openLightbox('image1.jpg')">
@@ -1510,9 +1646,9 @@
   <!-- Locations -->
   <section id="locations" class="locations reveal">
     <div class="section-header">
-      <div class="section-tag">Find Us</div>
-      <h2 class="section-title">Our Locations</h2>
-      <p class="section-subtitle">Visit Our Facilities</p>
+      <div class="section-tag" data-en="Find Us" data-bn="আমাদের খুঁজুন">Find Us</div>
+      <h2 class="section-title" data-en="Our Locations" data-bn="আমাদের অবস্থান">Our Locations</h2>
+      <p class="section-subtitle" data-en="Visit Our Facilities" data-bn="আমাদের সুবিধা পরিদর্শন করুন">Visit Our Facilities</p>
     </div>
     <div class="locations-grid">
       <div class="location-card">
@@ -1538,9 +1674,9 @@
   <!-- Contact -->
   <section id="contact" class="contact reveal">
     <div class="section-header">
-      <div class="section-tag">Get In Touch</div>
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-subtitle">Let's Discuss Your Next Project</p>
+      <div class="section-tag" data-en="Get In Touch" data-bn="যোগাযোগ করুন">Get In Touch</div>
+      <h2 class="section-title" data-en="Contact Us" data-bn="আমাদের সাথে যোগাযোগ করুন">Contact Us</h2>
+      <p class="section-subtitle" data-en="Let's Discuss Your Next Project" data-bn="আপনার পরবর্তী প্রকল্প নিয়ে আলোচনা করি">Let's Discuss Your Next Project</p>
     </div>
     <div class="contact-wrapper">
       <div class="contact-info">
@@ -1597,22 +1733,22 @@
           <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
           
           <div class="form-group">
-            <label for="name">Your Name</label>
+            <label for="name" data-en="Your Name" data-bn="আপনার নাম">Your Name</label>
             <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
-            <label for="email">Your Email</label>
+            <label for="email" data-en="Your Email" data-bn="আপনার ইমেইল">Your Email</label>
             <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
-            <label for="phone">Your Phone</label>
+            <label for="phone" data-en="Your Phone" data-bn="আপনার ফোন">Your Phone</label>
             <input type="tel" id="phone" name="phone">
           </div>
           <div class="form-group">
-            <label for="message">Project Details</label>
-            <textarea id="message" name="message" required placeholder="Describe your requirements..."></textarea>
+            <label for="message" data-en="Project Details" data-bn="প্রকল্পের বিবরণ">Project Details</label>
+            <textarea id="message" name="message" required placeholder=""></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;" data-en="Send Request" data-bn="অনুরোধ পাঠান">Send Request</button>
         </form>
       </div>
     </div>
@@ -1621,10 +1757,10 @@
   <!-- Footer -->
   <footer>
     <div class="footer-content">
-      <div class="footer-brand">NEW SATYA NARAYAN WELDING WORKS</div>
-      <p class="footer-text">Precision Engineering • Industrial Excellence • Quality Guaranteed</p>
+      <div class="footer-brand" data-en="NEW SATYA NARAYAN WELDING WORKS" data-bn="নিউ সত্য নারায়ণ ওয়েল্ডিং ওয়ার্কস">NEW SATYA NARAYAN WELDING WORKS</div>
+      <p class="footer-text" data-en="Precision Engineering • Industrial Excellence • Quality Guaranteed" data-bn="নিখুঁত প্রকৌশল • শিল্প উৎকর্ষতা • মান নিশ্চিত">Precision Engineering • Industrial Excellence • Quality Guaranteed</p>
       <div class="footer-divider"></div>
-      <p class="footer-copy">&copy; 2025 New Satya Narayan Welding Works. All Rights Reserved.</p>
+      <p class="footer-copy" data-en="© 2026 New Satya Narayan Welding Works. All Rights Reserved." data-bn="© ২০২৬ নিউ সত্য নারায়ণ ওয়েল্ডিং ওয়ার্কস। সর্বস্বত্ব সংরক্ষিত।">© 2026 New Satya Narayan Welding Works. All Rights Reserved.</p>
     </div>
   </footer>
 
@@ -1735,6 +1871,54 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeLightbox();
+      }
+    });
+
+    // Language Toggle
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.body.setAttribute('lang', currentLang);
+      
+      // Update all elements with data-en and data-bn attributes
+      const elements = document.querySelectorAll('[data-en][data-bn]');
+      elements.forEach(element => {
+        const text = element.getAttribute(`data-${currentLang}`);
+        if (text) {
+          // Check if element has children with data attributes
+          const hasDataChildren = element.querySelector('[data-en][data-bn]');
+          if (!hasDataChildren) {
+            // For company name, preserve line breaks
+            if (element.classList.contains('brand-text') || element.tagName === 'H1' && element.closest('.brand-text')) {
+              const parts = text.split(' ');
+              if (parts.length > 3) {
+                // Split Bengali company name into two lines
+                const midpoint = Math.ceil(parts.length / 2);
+                element.innerHTML = parts.slice(0, midpoint).join(' ') + '<br>' + parts.slice(midpoint).join(' ');
+              } else {
+                element.textContent = text;
+              }
+            } else {
+              element.textContent = text;
+            }
+          }
+        }
+      });
+
+      // Update button active states
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-bn').classList.toggle('active', lang === 'bn');
+
+      // Save preference
+      localStorage.setItem('preferred-language', currentLang);
+    }
+
+    // Load saved language preference
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferred-language');
+      if (savedLang && savedLang !== 'en') {
+        setLanguage(savedLang);
       }
     });
   </script>
