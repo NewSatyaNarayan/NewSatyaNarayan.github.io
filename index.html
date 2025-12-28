@@ -1152,7 +1152,9 @@
 
     @media (max-width: 768px) {
       header {
+        position: static;
         padding: 15px 25px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       }
 
       nav {
@@ -1161,6 +1163,13 @@
 
       .hamburger {
         display: flex;
+        position: fixed;
+        top: 25px;
+        right: 25px;
+        z-index: 2000;
+        background: var(--light);
+        padding: 8px;
+        border-radius: 4px;
       }
 
       .logo-container {
@@ -1183,7 +1192,7 @@
       }
 
       .hero {
-        padding: 100px 30px 60px;
+        padding: 60px 30px 60px;
       }
 
       .hero-content {
@@ -1557,7 +1566,7 @@
           <i class="fas fa-envelope"></i>
           <div class="contact-details">
             <h3>Email</h3>
-            <p><a href="mailto:newsatyanarayanweldingworks@gmail.com">newsatyanarayanweldingworks@gmail.com</a></p>
+            <p><a href="/cdn-cgi/l/email-protection#543a31232735202d353a3526352d353a233138303d3a33233b263f27143339353d387a373b39"><span class="__cf_email__" data-cfemail="4c22293b3f2d38352d222d3e2d352d223b29202825222b3b233e273f0c2b212d2520622f2321">[email&#160;protected]</span></a></p>
           </div>
         </div>
 
@@ -1571,7 +1580,7 @@
         </div>
 
         <div class="contact-actions">
-          <a href="mailto:newsatyanarayanweldingworks@gmail.com" class="contact-btn contact-btn-email">
+          <a href="/cdn-cgi/l/email-protection#6e000b191d0f1a170f000f1c0f170f00190b020a07000919011c051d2e09030f0702400d0103" class="contact-btn contact-btn-email">
             <i class="fas fa-envelope"></i> Email Us
           </a>
           <a href="https://wa.me/918240749830" target="_blank" class="contact-btn contact-btn-whatsapp">
@@ -1615,7 +1624,7 @@
       <div class="footer-brand">NEW SATYA NARAYAN WELDING WORKS</div>
       <p class="footer-text">Precision Engineering • Industrial Excellence • Quality Guaranteed</p>
       <div class="footer-divider"></div>
-      <p class="footer-copy">&copy; 2026 New Satya Narayan Welding Works. All Rights Reserved.</p>
+      <p class="footer-copy">&copy; 2025 New Satya Narayan Welding Works. All Rights Reserved.</p>
     </div>
   </footer>
 
@@ -1629,7 +1638,7 @@
     <img id="lightboxImg" src="" alt="Preview">
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Header scroll
     window.addEventListener('scroll', () => {
       const header = document.getElementById('header');
