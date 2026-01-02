@@ -824,6 +824,39 @@
       letter-spacing: 1px;
     }
 
+    .clients-more {
+      text-align: center;
+      color: var(--secondary);
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      margin-top: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      padding-top: 25px;
+    }
+
+    .clients-more::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+    }
+
+    .clients-more::after {
+      content: '•••';
+      display: block;
+      color: var(--gold);
+      font-size: 24px;
+      margin-top: 8px;
+      letter-spacing: 8px;
+    }
+
     .clients-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1615,6 +1648,7 @@
             <img src="client6.png" alt="Client 6">
           </div>
         </div>
+        <p class="clients-more" data-en="...and many more" data-bn="...এবং আরও অনেক">...and many more</p>
       </div>
     </div>
   </section>
@@ -1825,7 +1859,7 @@
           <i class="fas fa-envelope"></i>
           <div class="contact-details">
             <h3 data-en="Email" data-bn="ইমেইল">Email</h3>
-            <p><a href="/cdn-cgi/l/email-protection#204e455753415459414e41524159414e57454c44494e47574f524b5360474d41494c0e434f4d"><span class="__cf_email__" data-cfemail="cda3a8babeacb9b4aca3acbfacb4aca3baa8a1a9a4a3aabaa2bfa6be8daaa0aca4a1e3aea2a0">[email&#160;protected]</span></a></p>
+            <p><a href="mailto:newsatyanarayanweldingworks@gmail.com">newsatyanarayanweldingworks@gmail.com</a></p>
           </div>
         </div>
 
@@ -1839,7 +1873,7 @@
         </div>
 
         <div class="contact-actions">
-          <a href="/cdn-cgi/l/email-protection#ec82899b9f8d98958d828d9e8d958d829b89808885828b9b839e879fac8b818d8580c28f8381" class="contact-btn contact-btn-email">
+          <a href="mailto:newsatyanarayanweldingworks@gmail.com" class="contact-btn contact-btn-email">
             <i class="fas fa-envelope"></i> <span data-en="Email Us" data-bn="ইমেইল করুন">Email Us</span>
           </a>
           <a href="https://wa.me/918240749830" target="_blank" class="contact-btn contact-btn-whatsapp">
@@ -1853,7 +1887,7 @@
           <!-- FormSubmit Configuration -->
           <input type="hidden" name="_subject" value="New Contact Form Submission - NSNWW">
           <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+          <input type="hidden" name="_template" value="table">
           
           <div class="form-group">
             <label for="name" data-en="Your Name" data-bn="আপনার নাম">Your Name</label>
