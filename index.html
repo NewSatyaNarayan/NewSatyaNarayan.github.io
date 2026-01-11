@@ -219,26 +219,19 @@
 
     @media (max-width: 768px) {
       .lang-selector {
-        position: fixed;
         top: auto;
-        bottom: 20px;
-        right: 20px;
-        left: auto;
+        bottom: 15px;
+        right: 15px;
         padding: 4px;
         gap: 4px;
         border-width: 1px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        max-width: auto;
-        justify-content: normal;
-        z-index: 1500;
       }
 
       .lang-selector button {
-        padding: 8px 14px;
+        padding: 6px 12px;
         font-size: 11px;
         letter-spacing: 0.5px;
-        flex: none;
-        max-width: none;
       }
 
       .lang-selector button::before {
@@ -251,7 +244,15 @@
       }
 
       .lang-selector::after {
-        display: none;
+        bottom: auto;
+        top: -30px;
+        font-size: 10px;
+        padding: 4px 10px;
+      }
+
+      /* Hide tooltip on mobile to reduce clutter */
+      .lang-selector:hover::after {
+        opacity: 0;
       }
     }
 
