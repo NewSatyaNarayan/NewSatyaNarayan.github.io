@@ -396,32 +396,22 @@
     }
 
     .mobile-nav {
-      display: none;
-      position: absolute;
-      top: 100%;
+      position: fixed;
+      top: 95px;
       left: 0;
       right: 0;
       background: var(--light);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
       border-top: 2px solid var(--secondary);
       z-index: 998;
-      animation: slideDown 0.3s ease;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      flex-direction: column;
     }
 
     .mobile-nav.active {
-      display: flex;
-      flex-direction: column;
+      max-height: 400px;
     }
 
     .mobile-nav a {
@@ -436,6 +426,7 @@
       border-bottom: 1px solid rgba(10, 14, 39, 0.08);
       transition: all 0.3s ease;
       background: var(--light);
+      display: block;
     }
 
     .mobile-nav a:last-child {
@@ -1559,7 +1550,7 @@
       <a href="#locations" data-en="Locations" data-bn="অবস্থান">Locations</a>
       <a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
     </nav>
-    <div class="hamburger" onclick="toggleMobile()">
+    <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
@@ -1568,11 +1559,11 @@
 
   <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobileNav">
-    <a href="#about" onclick="closeMobile()" data-en="About" data-bn="পরিচিতি">About</a>
-    <a href="#services" onclick="closeMobile()" data-en="Services" data-bn="সেবা">Services</a>
-    <a href="#works" onclick="closeMobile()" data-en="Works" data-bn="কাজ">Works</a>
-    <a href="#locations" onclick="closeMobile()" data-en="Locations" data-bn="অবস্থান">Locations</a>
-    <a href="#contact" onclick="closeMobile()" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
+    <a href="#about" data-en="About" data-bn="পরিচিতি">About</a>
+    <a href="#services" data-en="Services" data-bn="সেবা">Services</a>
+    <a href="#works" data-en="Works" data-bn="কাজ">Works</a>
+    <a href="#locations" data-en="Locations" data-bn="অবস্থান">Locations</a>
+    <a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
   </div>
 
   <!-- Language Selector -->
@@ -1881,7 +1872,7 @@
           <i class="fas fa-envelope"></i>
           <div class="contact-details">
             <h3 data-en="Email" data-bn="ইমেইল">Email</h3>
-            <p><a href="/cdn-cgi/l/email-protection#b2dcd7c5c1d3c6cbd3dcd3c0d3cbd3dcc5d7ded6dbdcd5c5ddc0d9c1f2d5dfd3dbde9cd1dddf"><span class="__cf_email__" data-cfemail="f39d96848092878a929d9281928a929d84969f979a9d94849c819880b3949e929a9fdd909c9e">[email&#160;protected]</span></a></p>
+            <p><a href="mailto:newsatyanarayanweldingworks@gmail.com">newsatyanarayanweldingworks@gmail.com</a></p>
           </div>
         </div>
 
@@ -1895,7 +1886,7 @@
         </div>
 
         <div class="contact-actions">
-          <a href="/cdn-cgi/l/email-protection#d5bbb0a2a6b4a1acb4bbb4a7b4acb4bba2b0b9b1bcbbb2a2baa7bea695b2b8b4bcb9fbb6bab8" class="contact-btn contact-btn-email">
+          <a href="mailto:newsatyanarayanweldingworks@gmail.com" class="contact-btn contact-btn-email">
             <i class="fas fa-envelope"></i> <span data-en="Email Us" data-bn="ইমেইল করুন">Email Us</span>
           </a>
           <a href="https://wa.me/918240749830" target="_blank" class="contact-btn contact-btn-whatsapp">
@@ -1953,203 +1944,80 @@
     <img id="lightboxImg" src="" alt="Preview">
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Header scroll
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Scroll reveal
-    function reveal() {
-      const reveals = document.querySelectorAll('.reveal');
-      const windowHeight = window.innerHeight;
-      
-      reveals.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const revealPoint = 100;
-        
-        if (elementTop < windowHeight - revealPoint) {
-          element.classList.add('active');
-        }
-      });
+  <script>
+// LANGUAGE FUNCTION - GLOBAL
+function setLanguage(lang) {
+  document.body.setAttribute('lang', lang);
+  document.querySelectorAll('[data-en][data-bn]').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (text && !el.querySelector('[data-en][data-bn]')) {
+      el.textContent = text;
     }
+  });
+  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  document.getElementById('lang-bn').classList.toggle('active', lang === 'bn');
+  localStorage.setItem('preferredLanguage', lang);
+}
 
-    window.addEventListener('scroll', reveal);
-    reveal();
-
-    // Back to top
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // Mobile nav
-    function toggleMobile() {
-      const mobileNav = document.getElementById('mobileNav');
-      const hamburger = document.querySelector('.hamburger');
-      
-      mobileNav.classList.toggle('active');
-      hamburger.classList.toggle('active');
-    }
-
-    function closeMobile() {
-      const mobileNav = document.getElementById('mobileNav');
-      const hamburger = document.querySelector('.hamburger');
-      
+// EVERYTHING ELSE IN DOMCONTENTLOADED
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Initialize language
+  setLanguage(localStorage.getItem('preferredLanguage') || 'en');
+  
+  // Hamburger menu
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+  
+  hamburger.onclick = function() {
+    mobileNav.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  };
+  
+  // Close menu on link click
+  document.querySelectorAll('.mobile-nav a').forEach(function(link) {
+    link.onclick = function() {
       mobileNav.classList.remove('active');
       hamburger.classList.remove('active');
-    }
-
-    // Lightbox
-    function openLightbox(imageSrc) {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      
-      lightboxImg.src = imageSrc;
-      lightbox.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      const lightbox = document.getElementById('lightbox');
-      lightbox.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    // Close lightbox with Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
+    };
+  });
+  
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
-
-    // Language Toggle
-    let currentLang = 'en';
-
-    function setLanguage(lang) {
-      currentLang = lang;
-      document.body.setAttribute('lang', currentLang);
-      
-      // Update all elements with data-en and data-bn attributes
-      const elements = document.querySelectorAll('[data-en][data-bn]');
-      elements.forEach(element => {
-        const text = element.getAttribute(`data-${currentLang}`);
-        if (text) {
-          // Check if element has children with data attributes
-          const hasDataChildren = element.querySelector('[data-en][data-bn]');
-          if (!hasDataChildren) {
-            // For company name, preserve line breaks
-            if (element.classList.contains('brand-text') || element.tagName === 'H1' && element.closest('.brand-text')) {
-              const parts = text.split(' ');
-              if (parts.length > 3) {
-                // Split Bengali company name into two lines
-                const midpoint = Math.ceil(parts.length / 2);
-                element.innerHTML = parts.slice(0, midpoint).join(' ') + '<br>' + parts.slice(midpoint).join(' ');
-              } else {
-                element.textContent = text;
-              }
-            } else {
-              element.textContent = text;
-            }
-          }
-        }
-      });
-
-      // Update button active states
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-bn').classList.toggle('active', lang === 'bn');
-
-      // Save preference
-      localStorage.setItem('preferredLanguage', lang);
+  });
+  
+  // Back to top
+  var backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
     }
+  });
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  // Lightbox
+  window.openLightbox = function(src) {
+    var lightbox = document.getElementById('lightbox');
+    var img = document.getElementById('lightbox-img');
+    img.src = src;
+    lightbox.style.display = 'flex';
+  };
+  
+  window.closeLightbox = function() {
+    document.getElementById('lightbox').style.display = 'none';
+  };
+  
+});
 
-    // Initialize language on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-      setLanguage(savedLang);
-    });
-
-    // Scroll animations
-    function reveal() {
-      const reveals = document.querySelectorAll('.reveal');
-      reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        if (elementTop < windowHeight - elementVisible) {
-          element.classList.add('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', reveal);
-    reveal();
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-    // Lightbox
-    function openLightbox(src) {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.src = src;
-      lightbox.style.display = 'flex';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
-    }
-
-    // Back to Top
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
   </script>
 
 </body>
