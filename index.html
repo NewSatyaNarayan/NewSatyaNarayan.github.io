@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEW SATYA NARAYAN WELDING WORKS</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
   <link rel="apple-touch-icon" href="icon.png">
@@ -13,7 +12,6 @@
   <meta property="og:title" content="New Satya Narayan Welding Works">
   <meta property="og:description" content="Hydraulic Press Jobs, Fabrication, Machining, Bending, Plate Rolling, and Industrial Welding Services in Howrah.">
 
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -27,6 +25,7 @@
       --light: #FFFFFF;
       --gray: #8B8B8B;
       --bg-light: #F7F7F7;
+      --light-gray: #EFEFEF;
     }
 
     * {
@@ -1534,13 +1533,12 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header id="header">
     <div class="logo-container">
       <img src="logo.png" alt="Logo">
       <div class="brand-text">
         <h1 data-en="NEW SATYA NARAYAN WELDING WORKS" data-bn="নিউ সত্য নারায়ণ ওয়েল্ডিং ওয়ার্কস">NEW SATYA NARAYAN<br>WELDING WORKS</h1>
-        <p data-en="UNIT 1: Salap Bazar | UNIT 2: Ashwini Kumar Mondal Road" data-bn="ইউনিট ১: সালাপ বাজার | ইউনিট ২: অশ্বিনী কুমার মন্ডল রোড">UNIT 1: Salap Bazar | UNIT 2: Ashwini Kumar Mondal Road</p>
+        <p data-en="UNIT 1: Salap | UNIT 2: Ashwini Kumar Mondal Road" data-bn="ইউনিট ১: সালাপ | ইউনিট ২: অশ্বিনী কুমার মন্ডল রোড">UNIT 1: Salap | UNIT 2: Ashwini Kumar Mondal Road</p>
       </div>
     </div>
     <nav>
@@ -1557,7 +1555,6 @@
     </div>
   </header>
 
-  <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobileNav">
     <a href="#about" data-en="About" data-bn="পরিচিতি">About</a>
     <a href="#services" data-en="Services" data-bn="সেবা">Services</a>
@@ -1566,7 +1563,6 @@
     <a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
   </div>
 
-  <!-- Language Selector -->
   <div class="lang-selector" data-label="Choose Language / ভাষা নির্বাচন করুন">
     <button onclick="setLanguage('en')" id="lang-en" class="active">
       <span>English</span>
@@ -1576,7 +1572,6 @@
     </button>
   </div>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
@@ -1595,7 +1590,6 @@
     </div>
   </section>
 
-  <!-- About -->
   <section id="about" class="about">
     <div class="section-header">
       <div class="section-tag" data-en="Who We Are" data-bn="আমরা কে">Who We Are</div>
@@ -1666,7 +1660,6 @@
     </div>
   </section>
 
-  <!-- Services -->
   <section id="services" class="services">
     <div class="section-header">
       <div class="section-tag" data-en="What We Do" data-bn="আমরা যা করি">What We Do</div>
@@ -1748,7 +1741,6 @@
     </div>
   </section>
 
-  <!-- Works -->
   <section id="works" class="works">
     <div class="section-header">
       <div class="section-tag" data-en="Portfolio" data-bn="পোর্টফোলিও">Portfolio</div>
@@ -1810,10 +1802,36 @@
           </div>
         </div>
       </div>
+      <div class="work-item" onclick="openLightbox('image7.jpg')">
+        <img src="image7.jpg" alt="Project 7">
+        <div class="work-overlay">
+          <div class="work-overlay-content">
+            <i class="fas fa-search-plus"></i>
+            <p>View Project</p>
+          </div>
+        </div>
+      </div>
+      <div class="work-item" onclick="openLightbox('image8.jpg')">
+        <img src="image8.jpg" alt="Project 8">
+        <div class="work-overlay">
+          <div class="work-overlay-content">
+            <i class="fas fa-search-plus"></i>
+            <p>View Project</p>
+          </div>
+        </div>
+      </div>
+      <div class="work-item" onclick="openLightbox('image9.jpg')">
+        <img src="image9.jpg" alt="Project 9">
+        <div class="work-overlay">
+          <div class="work-overlay-content">
+            <i class="fas fa-search-plus"></i>
+            <p>View Project</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Locations -->
   <section id="locations" class="locations">
     <div class="section-header">
       <div class="section-tag" data-en="Find Us" data-bn="আমাদের খুঁজুন">Find Us</div>
@@ -1825,7 +1843,7 @@
         <h3 class="location-title">UNIT 1</h3>
         <p class="location-address">
           <i class="fas fa-map-marker-alt"></i>
-          <span>Salap Bazar, Howrah - 711409</span>
+          <span data-en="Salap, Howrah - 711409" data-bn="সালাপ, হাওড়া - ৭১১৪০৯">Salap, Howrah - 711409</span>
         </p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325.53731322465137!2d88.26734678515355!3d22.61519551526018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8830034457161%3A0x6582fabc7670dd4e!2sNew%20Satya%20Narayan%20Welding%20Works!5e0!3m2!1sen!2sin!4v1757956803217!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
@@ -1834,14 +1852,13 @@
         <h3 class="location-title">UNIT 2</h3>
         <p class="location-address">
           <i class="fas fa-map-marker-alt"></i>
-          <span>189/1/1 Ashwini Kumar Mondal Road, Howrah - 711101</span>
+          <span data-en="189/1/1 Ashwini Kumar Mondal Road, Howrah - 711101" data-bn="১৮৯/১/১ অশ্বিনী কুমার মন্ডল রোড, হাওড়া - ৭১১১০১">189/1/1 Ashwini Kumar Mondal Road, Howrah - 711101</span>
         </p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58931.447422635116!2d88.25241573232422!3d22.608427843102355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027700322f5d1f%3A0x8e2eaa26b7ea065!2sNew%20Satya%20Narayan%20Welding%20Works%20(Unit-2)!5e0!3m2!1sen!2sin!4v1758220220742!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact" class="contact">
     <div class="section-header">
       <div class="section-tag" data-en="Get In Touch" data-bn="যোগাযোগ করুন">Get In Touch</div>
@@ -1880,7 +1897,7 @@
           <i class="fas fa-map-marker-alt"></i>
           <div class="contact-details">
             <h3 data-en="Addresses" data-bn="ঠিকানা">Addresses</h3>
-            <p><strong data-en="Unit 1:" data-bn="ইউনিট ১:">Unit 1:</strong> <span data-en="Salap Bazar, Howrah - 711409" data-bn="সালাপ বাজার, হাওড়া - ৭১১৪০৯">Salap Bazar, Howrah - 711409</span></p>
+            <p><strong data-en="Unit 1:" data-bn="ইউনিট ১:">Unit 1:</strong> <span data-en="Salap, Howrah - 711409" data-bn="সালাপ, হাওড়া - ৭১১৪০৯">Salap, Howrah - 711409</span></p>
             <p><strong data-en="Unit 2:" data-bn="ইউনিট ২:">Unit 2:</strong> <span data-en="189/1/1 Ashwini Kumar Mondal Road, Howrah - 711101" data-bn="১৮৯/১/১ অশ্বিনী কুমার মন্ডল রোড, হাওড়া - ৭১১১০১">189/1/1 Ashwini Kumar Mondal Road, Howrah - 711101</span></p>
           </div>
         </div>
@@ -1897,7 +1914,6 @@
 
       <div class="contact-form">
         <form action="https://formsubmit.co/newsatyanarayanweldingworks@gmail.com" method="POST">
-          <!-- FormSubmit Configuration -->
           <input type="hidden" name="_subject" value="New Contact Form Submission - NSNWW">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
@@ -1924,7 +1940,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-brand" data-en="NEW SATYA NARAYAN WELDING WORKS" data-bn="নিউ সত্য নারায়ণ ওয়েল্ডিং ওয়ার্কস">NEW SATYA NARAYAN WELDING WORKS</div>
@@ -1934,12 +1949,10 @@
     </div>
   </footer>
 
-  <!-- Back to Top -->
   <button id="backToTop">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <img id="lightboxImg" src="" alt="Preview">
   </div>
@@ -2007,7 +2020,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Lightbox
   window.openLightbox = function(src) {
     var lightbox = document.getElementById('lightbox');
-    var img = document.getElementById('lightbox-img');
+    var img = document.getElementById('lightboxImg');
     img.src = src;
     lightbox.style.display = 'flex';
   };
@@ -2017,7 +2030,6 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   
 });
-
   </script>
 
 </body>
