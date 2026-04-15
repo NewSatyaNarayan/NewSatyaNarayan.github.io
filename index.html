@@ -995,7 +995,7 @@
       max-width: 1400px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
     }
 
@@ -1339,17 +1339,7 @@
       box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4);
     }
 
-    @media (max-width: 768px) {
-      #backToTop {
-        bottom: 70px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-      }
-    }
-
-    /* Lightbox */
+    /* Lightbox & Gallery */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -1358,8 +1348,8 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      cursor: pointer;
       animation: fadeIn 0.3s ease;
+      user-select: none;
     }
 
     @keyframes fadeIn {
@@ -1369,21 +1359,48 @@
 
     .lightbox img {
       max-width: 90%;
-      max-height: 90%;
+      max-height: 90vh;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      transition: transform 0.3s ease;
     }
 
-    /* Scroll Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
+    .lightbox-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: transparent;
+      border: none;
+      color: var(--light);
+      font-size: 40px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: color 0.3s ease;
     }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    .lightbox-close-btn:hover {
+      color: var(--secondary);
     }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 30px;
+      padding: 15px 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10000;
+    }
+
+    .lightbox-nav:hover {
+      background: var(--secondary);
+    }
+
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
 
     /* Responsive */
     @media (max-width: 1024px) {
@@ -1410,7 +1427,7 @@
       }
 
       .works-grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       }
 
       header {
@@ -1527,6 +1544,28 @@
 
       footer {
         padding: 50px 30px 25px;
+      }
+      
+      .lightbox-nav {
+        padding: 10px 15px;
+        font-size: 20px;
+      }
+      
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
+      
+      .lightbox-close-btn {
+        top: 10px;
+        right: 15px;
+        font-size: 35px;
+      }
+      
+      #backToTop {
+        bottom: 70px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
       }
     }
   </style>
@@ -1748,86 +1787,53 @@
       <p class="section-subtitle" data-en="Projects Delivered with Excellence" data-bn="উৎকর্ষতার সাথে সম্পন্ন প্রকল্প">Projects Delivered with Excellence</p>
     </div>
     <div class="works-grid">
-      <div class="work-item" onclick="openLightbox('image1.jpg')">
+      <div class="work-item" onclick="openLightbox(0)">
         <img src="image1.jpg" alt="Project 1">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
-      <div class="work-item" onclick="openLightbox('image2.jpg')">
+      <div class="work-item" onclick="openLightbox(1)">
         <img src="image2.jpg" alt="Project 2">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
-      <div class="work-item" onclick="openLightbox('image3.jpg')">
+      <div class="work-item" onclick="openLightbox(2)">
         <img src="image3.jpg" alt="Project 3">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
-      <div class="work-item" onclick="openLightbox('image4.jpg')">
+      <div class="work-item" onclick="openLightbox(3)">
         <img src="image4.jpg" alt="Project 4">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
-      <div class="work-item" onclick="openLightbox('image5.jpg')">
+      <div class="work-item" onclick="openLightbox(4)">
         <img src="image5.jpg" alt="Project 5">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
-      <div class="work-item" onclick="openLightbox('image6.jpg')">
+      <div class="work-item" onclick="openLightbox(5)">
         <img src="image6.jpg" alt="Project 6">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
-      <div class="work-item" onclick="openLightbox('image7.jpg')">
+      <div class="work-item" onclick="openLightbox(6)">
         <img src="image7.jpg" alt="Project 7">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
-      <div class="work-item" onclick="openLightbox('image8.jpg')">
+      <div class="work-item" onclick="openLightbox(7)">
         <img src="image8.jpg" alt="Project 8">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
-      <div class="work-item" onclick="openLightbox('image9.jpg')">
+      <div class="work-item" onclick="openLightbox(8)">
         <img src="image9.jpg" alt="Project 9">
-        <div class="work-overlay">
-          <div class="work-overlay-content">
-            <i class="fas fa-search-plus"></i>
-            <p>View Project</p>
-          </div>
-        </div>
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
+      </div>
+      <div class="work-item" onclick="openLightbox(9)">
+        <img src="image10.jpg" alt="Project 10">
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
+      </div>
+      <div class="work-item" onclick="openLightbox(10)">
+        <img src="image11.jpg" alt="Project 11">
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
+      </div>
+      <div class="work-item" onclick="openLightbox(11)">
+        <img src="image12.jpg" alt="Project 12">
+        <div class="work-overlay"><div class="work-overlay-content"><i class="fas fa-search-plus"></i><p>View Project</p></div></div>
       </div>
     </div>
   </section>
@@ -1953,8 +1959,11 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close-btn" onclick="closeLightbox(event, true)">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1, event)">&#10094;</button>
     <img id="lightboxImg" src="" alt="Preview">
+    <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1, event)">&#10095;</button>
   </div>
 
   <script>
@@ -2016,19 +2025,81 @@ document.addEventListener('DOMContentLoaded', function() {
   backToTop.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-  
-  // Lightbox
-  window.openLightbox = function(src) {
-    var lightbox = document.getElementById('lightbox');
-    var img = document.getElementById('lightboxImg');
-    img.src = src;
+
+  // --- NEW LIGHTBOX GALLERY LOGIC ---
+  const galleryImages = [
+    'image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 
+    'image5.jpg', 'image6.jpg', 'image7.jpg', 'image8.jpg', 
+    'image9.jpg', 'image10.jpg', 'image11.jpg', 'image12.jpg'
+  ];
+  let currentImageIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+
+  // Open Lightbox
+  window.openLightbox = function(index) {
+    currentImageIndex = index;
+    lightboxImg.src = galleryImages[currentImageIndex];
     lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Stop background scrolling
   };
   
-  window.closeLightbox = function() {
-    document.getElementById('lightbox').style.display = 'none';
+  // Change Image (Prev/Next)
+  window.changeLightboxImage = function(step, event) {
+    if (event) event.stopPropagation(); // Stop click from closing lightbox
+    currentImageIndex += step;
+    
+    // Loop around if out of bounds
+    if (currentImageIndex < 0) {
+      currentImageIndex = galleryImages.length - 1;
+    } else if (currentImageIndex >= galleryImages.length) {
+      currentImageIndex = 0;
+    }
+    
+    lightboxImg.src = galleryImages[currentImageIndex];
   };
   
+  // Close Lightbox
+  window.closeLightbox = function(event, forceClose = false) {
+    // Only close if clicking the dark background or the 'X' button
+    if (forceClose || event.target.id === 'lightbox') {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore background scrolling
+    }
+  };
+
+  // Keyboard support for Lightbox
+  document.addEventListener('keydown', function(e) {
+    if (lightbox.style.display === 'flex') {
+      if (e.key === 'ArrowLeft') changeLightboxImage(-1);
+      if (e.key === 'ArrowRight') changeLightboxImage(1);
+      if (e.key === 'Escape') closeLightbox(e, true);
+    }
+  });
+
+  // Touch Swipe support for Lightbox
+  let touchstartX = 0;
+  let touchendX = 0;
+  
+  lightbox.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+  });
+
+  lightbox.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const threshold = 50; // minimum pixel swipe distance
+    if (touchendX < touchstartX - threshold) {
+      changeLightboxImage(1); // Swiped Left -> Next Image
+    }
+    if (touchendX > touchstartX + threshold) {
+      changeLightboxImage(-1); // Swiped Right -> Prev Image
+    }
+  }
+
 });
   </script>
 
